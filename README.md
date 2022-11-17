@@ -4,4 +4,4 @@ mktgen/gen.sh will generate market data for symbols from file symfile.txt (200 s
 
 main.cpp has the main code which uses a priority queue to order the market data from the different files into one single file.
 
-@TODO : Add multi threaded handling of this processing.
+@TODO : Object pooling in multithreaded implementation
