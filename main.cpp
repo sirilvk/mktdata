@@ -221,7 +221,6 @@ void multiThProcess(const std::string& path, const std::string& ofile) {
 	    if (pn.m_node == nullptr) continue;
 	    workerPQ.push(pn);
 	}
-	std::cout << "Thread id " << currNode << " PQ size=" << workerPQ.size() << " start=" << start << " end=" << end << std::endl;
 
 	while(not workerPQ.empty()) {
 	    NodePtr nd = workerPQ.top().m_node;
@@ -253,6 +252,7 @@ void multiThProcess(const std::string& path, const std::string& ofile) {
 	if (i == 0) wkrEnd += (MAX_FILEID - 1) % NPROCS;
 	if (wkrEnd > MAX_FILEID) wkrEnd = MAX_FILEID;
 	std::thread wkr(workerFn, wkrSt, wkrEnd, i);
+	std::cout << "Thread id " << i << " start=" << wkrSt << " end=" << wkrEnd << std::endl;
 	wkrSt = wkrEnd;
 	wkr.detach();
     }
